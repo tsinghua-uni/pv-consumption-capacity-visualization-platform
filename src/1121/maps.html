@@ -1,0 +1,97 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                font-family: Arial, sans-serif;
+            }
+            h1 {
+                margin-bottom: 20px;
+            }
+            #map-container {
+                display: flex;
+                flex-direction: row;
+                width: 100vw;
+                height: calc(100vh - 60px);
+            }
+            iframe {
+                width: 50vw;
+                height: 100%;
+                border: none;
+                overflow: hidden;
+            }
+            #controls {
+                display: flex;
+                justify-content: space-between;
+                width: 300px;
+                margin-bottom: 20px;
+            }
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+            }
+            .start {
+                background-color: #27cc7f;
+            }
+            .stop {
+                background-color: #cc2727;
+            }
+            .refresh {
+                background-color: #277fcc;
+            }
+        </style>
+    <script>
+    var autoReload = null;
+
+    function startAutoReload() {
+        autoReload = setInterval(function(){
+            window.location.reload(1);
+        }, 2000); // Reload every 2000ms
+    }
+
+    function stopAutoReload() {
+        if (autoReload) {
+            clearInterval(autoReload);
+            autoReload = null;
+            alert("Auto reload stopped.");  // Show message
+        }
+    }
+
+    function refreshPage() {
+        location.reload();
+    }
+
+    // Call startAutoReload immediately after defining it
+    startAutoReload();
+    </script>
+    </head>
+    <body>
+        <h1>PV Consumption Capacity Visualization Platform</h1>
+        <div id="clock">
+        <iframe width="80" height="20" src="https://vclock.com/embed/time/#theme=0&ampm=1&showdate=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+        <div id="controls">
+            <button class="start" onclick="startAutoReload()">Start Auto Reload</button>
+            <button class="stop" onclick="stopAutoReload()">Stop Auto Reload</button>
+            <button class="refresh" onclick="refreshPage()">Refresh</button>
+        </div>
+        <div id="map-container">
+            <iframe src="map1.html"></iframe>
+            <iframe src="map2.html"></iframe>
+        </div>
+    </body>
+    </html>
+    

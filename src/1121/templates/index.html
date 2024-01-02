@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Map Generator</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Map Generator</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="refresh" onclick="location.reload()">Refresh</button>
+    <iframe src="map_china_cities_dynamic.html" width="1200" height="600"></iframe>
+
+    <script>
+        $('#start').click(function () {
+            $.post('/start', function () {
+                alert('Job started');
+            });
+        });
+
+        $('#stop').click(function () {
+            $.post('/stop', function () {
+                alert('Job stopped');
+            });
+        });
+    </script>
+</body>
+
+</html>
